@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "description": "Simple Video Callling application using ",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "nodemon": "^3.1.0",
     "socket.io": "^4.7.5"
   }
 }
