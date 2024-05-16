@@ -116,7 +116,7 @@ const Room = () => {
             <>
             <h2>My Stream</h2>
             <ReactPlayer 
-              muted
+              // muted
               playing
               height="200px"
               width="300px"
@@ -131,7 +131,7 @@ const Room = () => {
             <>
             <h2>Remote Stream</h2>
             <ReactPlayer 
-              muted
+              // muted
               playing
               height="200px"
               width="300px"
