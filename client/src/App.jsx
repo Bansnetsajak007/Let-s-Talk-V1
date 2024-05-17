@@ -2,7 +2,6 @@ import {Routes, Route} from 'react-router-dom'
 import LobbyPage from './pages/LobbyPage'
 import RoomPage from './pages/Room'
 
-
 const App = () => {
   return (
     <div>

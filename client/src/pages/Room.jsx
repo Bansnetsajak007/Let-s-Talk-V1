@@ -104,45 +104,71 @@ const Room = () => {
 
 
   return (
-    <div>
-        <h1>Room Page</h1>
-        <h4>{remoteSocketId ? 'Connected' : 'No one in Room' }</h4>
-        {myStream && <button onClick={sendStreams}>Send Stream</button>}
-        {
-          remoteSocketId && <button onClick={handelCallUser}>Call</button>
-        }
-        {
-          myStream && (
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-4">
+      <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-2xl">
+        <h1 className="text-4xl font-bold text-center mb-4">Room Page</h1>
+        <h4 className={`text-xl font-medium text-center mb-4 ${remoteSocketId ? 'text-green-500' : 'text-red-500'}`}>
+          {remoteSocketId ? 'Connected' : 'Wait for other to join'}
+        </h4>
+        <div className="flex justify-center space-x-4 mb-4">
+          {myStream && (
+            <button
+              onClick={sendStreams}
+              className="py-2 px-4 bg-blue-600 text-white font-medium rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            >
+              Send Stream
+            </button>
+          )}
+          {remoteSocketId && (
             <>
-            <h2>My Stream</h2>
-            <ReactPlayer 
-              // muted
-              playing
-              height="200px"
-              width="300px"
-            url={myStream} 
-            />
+            <button
+              onClick={handelCallUser}
+              className="py-2 px-4 bg-green-600 text-white font-medium rounded hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+            >
+              Call
+            </button>
+            <button
+              // onClick={handelEndCall}
+              className="py-2 px-4 bg-red-600 text-white font-medium rounded hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+            >
+                End Call
+            </button>
             </>
-          )
-        }
-
-        {
-          remoteStream && (
-            <>
-            <h2>Remote Stream</h2>
-            <ReactPlayer 
-              // muted
-              playing
-              height="200px"
-              width="300px"
-            url={remoteStream} 
-            />
-            </>
-          )
-        }
-        
+          )}
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {myStream && (
+            <div>
+              <h2 className="text-2xl font-semibold mb-2 text-center">My Stream</h2>
+              <div className="rounded overflow-hidden shadow-lg">
+                <ReactPlayer
+                  playing
+                  height="200px"
+                  width="100%"
+                  url={myStream}
+                  className="rounded"
+                />
+              </div>
+            </div>
+          )}
+          {remoteStream && (
+            <div>
+              <h2 className="text-2xl font-semibold mb-2 text-center">Remote Stream</h2>
+              <div className="rounded overflow-hidden shadow-lg">
+                <ReactPlayer
+                  playing
+                  height="200px"
+                  width="100%"
+                  url={remoteStream}
+                  className="rounded"
+                />
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
 export default Room
